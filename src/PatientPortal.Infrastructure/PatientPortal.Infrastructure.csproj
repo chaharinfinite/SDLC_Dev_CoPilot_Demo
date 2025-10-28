@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C663219-435C-4673-A137-BC0FFE43D3B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PatientPortal.Infrastructure</RootNamespace>
+    <AssemblyName>PatientPortal.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PatientPortal.Application\PatientPortal.Application.csproj">
+      <Project>{8F25D6FF-7A4B-4189-A524-8198C0D1F34B}</Project>
+      <Name>PatientPortal.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatientPortal.Domain\PatientPortal.Domain.csproj">
+      <Project>{2F982F2D-9FC6-4AEC-9D3E-9BB054AD022D}</Project>
+      <Name>PatientPortal.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+  <Compile Include="AI\RuleBasedAiTriageClient.cs" />
+  <Compile Include="Configuration\InfrastructureModule.cs" />
+    <Compile Include="Notifications\ConsoleNotificationGateway.cs" />
+    <Compile Include="Persistence\InMemoryDataStore.cs" />
+    <Compile Include="Persistence\InMemoryRepository.cs" />
+    <Compile Include="Persistence\InMemoryUnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IdentityService.cs" />
+    <Compile Include="Storage\FileSystemStorageService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
